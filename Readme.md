@@ -96,12 +96,19 @@ Phase 기반 개발을 통해 기능을 점진적으로 확장합니다.
 
 ## 📂 Project Structure
 
+```
 planet-calendar/
-├─ frontend/ # Frontend (VS Code)
-├─ backend/ # Backend (STS3 - Spring)
-├─ docs/ # API / ERD / 기획 문서
+├─ frontend/        # Frontend (VS Code)
+│  ├─ src/
+│  └─ assets/
+│
+├─ backend/         # Backend (STS3 - Spring)
+│  ├─ src/main/java/
+│  ├─ src/main/resources/
+│  └─ pom.xml
+│
+├─ docs/            # API / ERD / 기획 문서
 └─ README.md
-
 
 ---
 

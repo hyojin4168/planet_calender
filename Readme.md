@@ -78,19 +78,61 @@ Phase 기반 개발을 통해 기능을 점진적으로 확장합니다.
 
 ## 🛠 Tech Stack
 
-### Frontend
-- HTML5
-- CSS3
-- JavaScript (ES6+)
+## 🛠 Tech Stack
 
-### Backend
-- Spring Framework (STS3)
-- REST API
+### 🎨 Frontend
+- **Language**
+  - HTML5
+  - CSS3
+  - JavaScript (ES6+)
 
-### Tools
-- Git / GitHub
-- Visual Studio Code
-- Spring Tool Suite 3
+- **UI / UX**
+  - Responsive Web Design
+  - Calendar UI (Custom Implementation)
+
+- **State / Data Handling**
+  - Vanilla JavaScript DOM Manipulation
+  - Fetch API (REST API 통신)
+
+- **Development Tools**
+  - Visual Studio Code
+
+---
+
+### ⚙ Backend
+- **Language**
+  - Java 11
+
+- **Framework**
+  - Spring Framework 5.3.x
+  - Spring MVC
+
+- **Persistence**
+  - MyBatis 3.x
+
+- **Web / API**
+  - REST API
+  - JSON (Jackson)
+
+- **Database**
+  - Oracle Database
+
+- **Server**
+  - Apache Tomcat 9.x
+
+- **Security / Common**
+  - Session-based Authentication
+  - Interceptor / Filter
+  - Exception Handling
+
+- **Development Tools**
+  - Spring Tool Suite 3 (STS3)
+
+---
+
+### 🧰 Collaboration & Version Control
+- Git
+- GitHub
 
 ---
 

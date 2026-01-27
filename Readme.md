@@ -96,6 +96,7 @@ Phase 기반 개발을 통해 기능을 점진적으로 확장합니다.
 
 ## 📂 Project Structure
 
+```text
 planet-calendar/
 ├─ frontend/        # Frontend (VS Code)
 │  ├─ src/
@@ -108,6 +109,7 @@ planet-calendar/
 │
 ├─ docs/            # API / ERD / 기획 문서
 └─ README.md
+```
 
 ---
 

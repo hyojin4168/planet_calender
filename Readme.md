@@ -110,7 +110,7 @@ planet-calendar/
 | Branch | Description |
 |------|-------------|
 | `main` | 배포 브랜치 (직접 push 금지) |
-| `dev` | 개발 통합 브랜치 |
+| `develop` | 개발 통합 브랜치 |
 | `feature/*` | 기능 단위 브랜치 |
 
 ---
@@ -118,7 +118,7 @@ planet-calendar/
 ## 👥 Collaboration Rules
 
 - `main` 브랜치 직접 push 금지
-- `dev` 또는 `feature` 브랜치에서 작업
+- `develop` 또는 `feature` 브랜치에서 작업
 - Pull Request를 통해서만 `main` 병합
 
 ---

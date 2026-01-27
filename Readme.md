@@ -184,7 +184,7 @@ planet-calendar/
 - 김효진  
   ✉ djduebfu3747@gmail.com
 - 장하은  
-  ✉ 
+  ✉ jhe290609@gmail.com
 
 
 ---

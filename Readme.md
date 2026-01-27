@@ -78,8 +78,6 @@ Phase 기반 개발을 통해 기능을 점진적으로 확장합니다.
 
 ## 🛠 Tech Stack
 
-## 🛠 Tech Stack
-
 ### 🎨 Frontend
 - **Language**
   - HTML5

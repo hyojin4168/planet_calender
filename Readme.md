@@ -208,27 +208,35 @@ planet-calendar/
 └─ README.md
 ```
 
-🌿 Branch Strategy
-Branch	Description
-main	배포 브랜치 (직접 push 금지)
-develop	개발 통합 브랜치
-feature/*	기능 단위 브랜치
+## 🌿 Branch Strategy
 
-👥 Collaboration Rules
-main 브랜치 직접 push 금지
-develop 또는 feature 브랜치에서 작업
-Pull Request를 통해서만 main 병합
+| Branch | Description |
+|------|-------------|
+| `main` | 배포 브랜치 (직접 push 금지) |
+| `develop` | 개발 통합 브랜치 |
+| `feature/*` | 기능 단위 브랜치 |
 
-🧸 Team
-Name	Role
-김효진	백엔드 · 일정/투두/D-Day 설계
-장하은	기획 · 프론트엔드 개발
-💌 Contact
-김효진
-✉ djduebfu3747@gmail.com
 
-장하은
-✉ jhe290609@gmail.com
+## 👥 Collaboration Rules
 
-본 프로젝트는 협업 및 확장성을 고려하여 설계되었으며,
-README는 개발 진행에 따라 지속적으로 업데이트됩니다.
+- `main` 브랜치 직접 push 금지
+- `develop` 또는 `feature` 브랜치에서 작업
+- Pull Request를 통해서만 `main` 병합
+
+## 🧸 Team
+
+| Name | Role |
+|------|------|
+| 김효진 | 백엔드 · 일정 / 투두 / D-Day 설계 |
+| 장하은 | 기획 · 프론트엔드 개발 |
+
+## 💌 Contact
+
+- 김효진  
+  ✉ djduebfu3747@gmail.com
+- 장하은  
+  ✉ jhe290609@gmail.com
+
+
+> 본 프로젝트는 협업 및 확장성을 고려하여 설계되었으며,  
+> README는 개발 진행에 따라 지속적으로 업데이트됩니다.

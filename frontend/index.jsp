@@ -1,3 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:set var="path" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -5,9 +12,11 @@
   <title>Planet Calendar</title>
 
   <!-- 공통 스타일 -->
-  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="${path}/resources/css/style.css" />
 </head>
 <body>
+
+  <%@ include file="../common/header.jsp" %>
 
   <!-- =====================
        Context Bar
@@ -15,6 +24,7 @@
   <section class="context-bar">
     <div class="context-inner">
       <div class="selected-date">
+        <!-- JS에서 값 주입 -->
         <span class="date-main"></span>
         <span class="date-sub"></span>
       </div>
@@ -46,7 +56,10 @@
 
   </main>
 
+  <%@ include file="../common/footer.jsp" %>
+
   <!-- scripts -->
-  <script src="./js/main.js"></script>
+  <script src="${path}/resources/js/main.js"></script>
+
 </body>
 </html>

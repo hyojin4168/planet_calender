@@ -1,0 +1,236 @@
+/* =========================
+   Design Tokens
+========================= */
+:root {
+  --bg-main: #ffffff;
+  --bg-sub: #f7f8fa;
+
+  --text-main: #1f2937;
+  --text-sub: #6b7280;
+
+  --accent: #6366f1;        /* 은은한 포인트 (보라/인디고) */
+  --accent-soft: #eef2ff;
+
+  --radius: 14px;
+}
+
+/* =========================
+   Global Header
+========================= */
+
+.global-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--bg-main);
+}
+
+.global-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 18px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* App Title */
+.app-title {
+  margin: 0;
+  font-size: 0;
+}
+
+.app-title-link {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+/* Actions */
+.global-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  border-radius: 50%;
+  background: var(--bg-sub);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: background-color .2s ease,
+              transform .15s ease;
+}
+
+.icon-btn .icon {
+  font-size: 18px;
+  color: var(--text-sub);
+}
+
+.icon-btn:hover {
+  background: var(--accent-soft);
+}
+
+.icon-btn:active {
+  transform: scale(0.92);
+}
+
+/* =========================
+   Calendar Header
+========================= */
+
+.calendar-header {
+  background: var(--bg-sub);
+}
+
+.calendar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+/* Prev / Next */
+.cal-btn {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  color: var(--text-sub);
+  cursor: pointer;
+}
+
+.cal-btn:hover {
+  color: var(--accent);
+}
+
+/* Current Date */
+.current-date {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+/* View Toggle */
+.view-toggle {
+  display: flex;
+  background: var(--bg-main);
+  border-radius: var(--radius);
+  padding: 4px;
+}
+
+.view-btn {
+  padding: 6px 14px;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: var(--text-sub);
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.view-btn.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* =========================
+   Context Bar
+========================= */
+
+.context-bar {
+  background: var(--bg-main);
+}
+
+.context-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Selected Date */
+.selected-date {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.date-sub {
+  margin-left: 4px;
+  font-size: 13px;
+  color: var(--text-sub);
+}
+
+/* =========================
+   D-Day Area 
+========================= */
+
+.dday-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dday-btn {
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  color: var(--text-sub);
+  cursor: pointer;
+}
+
+.dday-btn:hover {
+  color: var(--accent);
+}
+
+.dday-list {
+  display: flex;
+  gap: 6px;
+}
+
+.dday-item {
+  padding: 6px 12px;
+  border-radius: 12px;
+
+  background: var(--accent-soft);
+  color: var(--accent);
+
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 480px) {
+  .current-date {
+    font-size: 18px;
+  }
+
+  .context-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

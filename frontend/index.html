@@ -3,13 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <title>Planet Calendar</title>
+
+  <!-- 공통 스타일 -->
   <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
 
-  <h1>Planet Calendar</h1>
-  <p>Frontend Starter Template</p>
+  <!-- =====================
+       Context Bar
+  ====================== -->
+  <section class="context-bar">
+    <div class="context-inner">
+      <div class="selected-date">
+        <span class="date-main"></span>
+        <span class="date-sub"></span>
+      </div>
+    </div>
+  </section>
 
+  <!-- =====================
+       Main (Calendar Grid)
+  ====================== -->
+  <main class="calendar-main">
+
+    <section class="calendar-grid">
+
+      <!-- 요일 -->
+      <div class="week-row">
+        <div class="week sun">Sun</div>
+        <div class="week">Mon</div>
+        <div class="week">Tue</div>
+        <div class="week">Wed</div>
+        <div class="week">Thu</div>
+        <div class="week">Fri</div>
+        <div class="week sat">Sat</div>
+      </div>
+
+      <!-- 날짜 (JS로 생성) -->
+      <div class="date-grid"></div>
+
+    </section>
+
+  </main>
+
+  <!-- scripts -->
   <script src="./js/main.js"></script>
 </body>
 </html>

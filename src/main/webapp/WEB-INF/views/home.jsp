@@ -1,22 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="common/header.jsp" %>
 
-<c:set var="path" value="${pageContext.request.contextPath}" />
-
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <title>Planet Calendar</title>
-
-  <!-- 공통 스타일 -->
-  <link rel="stylesheet" href="${path}/resources/css/style.css" />
-</head>
-<body>
-
-  <%@ include file="common/header.jsp" %>
+<link rel="stylesheet" href="${path}/resources/css/home.css">
 
   <!-- =====================
        Context Bar
@@ -55,11 +41,8 @@
     </section>
 
   </main>
-
-  <%@ include file="common/footer.jsp" %>
-
-  <!-- scripts -->
+  
+   <!-- scripts -->
   <script src="${path}/resources/js/main.js"></script>
 
-</body>
-</html>
+  <%@ include file="common/footer.jsp" %>

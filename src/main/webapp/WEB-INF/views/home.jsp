@@ -16,7 +16,7 @@
 </head>
 <body>
 
-  <%@ include file="../common/header.jsp" %>
+  <%@ include file="common/header.jsp" %>
 
   <!-- =====================
        Context Bar
@@ -56,7 +56,7 @@
 
   </main>
 
-  <%@ include file="../common/footer.jsp" %>
+  <%@ include file="common/footer.jsp" %>
 
   <!-- scripts -->
   <script src="${path}/resources/js/main.js"></script>

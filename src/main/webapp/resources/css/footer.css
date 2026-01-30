@@ -1,47 +1,82 @@
+/* =========================
+   Base (Mobile)
+========================= */
+
 body {
   background: #f6f8fb;
   margin: 0;
-  padding-bottom: 72px; /* 하단 네비 공간 */
+
+  /* 하단 네비 높이 + safe area */
+  padding-bottom: calc(64px + env(safe-area-inset-bottom));
 }
+
+/* =========================
+   Calendar Card
+========================= */
 
 .calendar-card {
   margin: 16px;
   padding: 20px 16px 28px;
-  background: #fff;
+  background: #ffffff;
   border-radius: 24px;
 }
 
+/* =========================
+   Bottom Navigation (Mobile)
+========================= */
+
 .bottom-nav {
   position: fixed;
-  bottom: 0;
   left: 0;
   right: 0;
+  bottom: 0;
 
   height: 64px;
+  padding-bottom: env(safe-area-inset-bottom);
+
   background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
 
   display: flex;
   justify-content: space-around;
   align-items: center;
 
-  border-top: 1px solid #e5e7eb;
   z-index: 1000;
 }
 
+/* 버튼 */
 .nav-btn {
   background: none;
   border: none;
+
+  width: 44px;   /* 🔥 터치 최소 영역 */
+  height: 44px;
+
   font-size: 24px;
   color: #9ca3af;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
 }
 
 .nav-btn.active {
   color: #111827;
 }
 
+/* =========================
+   Desktop
+========================= */
+
 @media (min-width: 769px) {
+
+  body {
+    padding-bottom: 0;
+  }
+
   .bottom-nav {
     display: none;
   }
 }
-

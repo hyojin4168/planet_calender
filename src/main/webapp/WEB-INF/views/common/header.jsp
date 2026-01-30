@@ -41,26 +41,26 @@
   <section class="calendar-header" aria-label="달력 컨트롤">
     <div class="calendar-inner">
 
-      <!-- 이전 / 다음 -->
-      <button type="button" class="cal-btn prev" aria-label="이전">
-        ‹
-      </button>
-
       <!-- 현재 연/월 -->
       <h2 class="current-date">
-        <span class="year">2026</span>.
-        <span class="month">01</span>
+        <span class="year"></span>.
+        <span class="month"></span>
       </h2>
-
-      <button type="button" class="cal-btn next" aria-label="다음">
-        ›
-      </button>
 
       <!-- View Toggle -->
       <div class="view-toggle">
-        <button type="button" class="view-btn active">월</button>
-        <button type="button" class="view-btn">주</button>
-      </div>
+		  <button type="button"
+		          class="view-btn month active"
+		          data-view="month">
+		   		 월
+		  </button>
+		
+		  <button type="button"
+		          class="view-btn week"
+		          data-view="week">
+		   		 주
+		  </button>
+		</div>
 
     </div>
   </section>
@@ -71,8 +71,8 @@
 
       <!-- Selected Date -->
       <div class="selected-date">
-        <span class="date-main">1월 29일</span>
-        <span class="date-sub">(수)</span>
+        <span class="date-main"></span>
+        <span class="date-sub"></span>
       </div>
 
       <!-- D-Day Area -->
@@ -89,6 +89,3 @@
 
     </div>
   </section>
-
-</body>
-</html>

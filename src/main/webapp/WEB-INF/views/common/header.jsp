@@ -16,76 +16,46 @@
 </head>
 <body>
 
-  <!-- Global Header -->
-  <header class="global-header" role="banner">
-    <div class="global-inner">
+  <!-- Calendar Toolbar (통합 헤더) -->
+<section class="calendar-toolbar" aria-label="달력 컨트롤">
+  <div class="toolbar-inner">
 
-      <h1 class="app-title">
-        <a href="${path}/" class="app-title-link">Planet Calendar</a>
-      </h1>
+    <!-- 1) 연/월 -->
+    <button type="button" class="ym-btn" aria-label="연/월 선택">
+      <span class="year"></span>.<span class="month"></span>
+      <span class="ym-caret"></span>
+    </button>
 
-      <nav class="global-actions" aria-label="전역 메뉴">
-        <button type="button" class="icon-btn menu-btn" aria-label="기능 메뉴">
-          <span class="icon">☰</span>
-        </button>
+    <!-- 2) 월/주 토글 -->
+    <div class="view-toggle" role="tablist" aria-label="보기 전환">
+      <button type="button"
+              class="view-btn month active"
+              data-view="month"
+              role="tab"
+              aria-selected="true">
+        월
+      </button>
 
-        <button type="button" class="icon-btn setting-btn" aria-label="설정">
-          <span class="icon">⚙</span>
-        </button>
-      </nav>
-
+      <button type="button"
+              class="view-btn week"
+              data-view="week"
+              role="tab"
+              aria-selected="false">
+        주
+      </button>
     </div>
-  </header>
 
-  <!-- Calendar Header -->
-  <section class="calendar-header" aria-label="달력 컨트롤">
-    <div class="calendar-inner">
+    <!-- 3) D-Day -->
+    <div class="dday-wrap" aria-label="D-Day 목록">
+      <button type="button" class="dday-nav prev" aria-label="이전 D-Day">‹</button>
 
-      <!-- 현재 연/월 -->
-      <h2 class="current-date">
-        <span class="year"></span>.
-        <span class="month"></span>
-      </h2>
-
-      <!-- View Toggle -->
-      <div class="view-toggle">
-		  <button type="button"
-		          class="view-btn month active"
-		          data-view="month">
-		   		 월
-		  </button>
-		
-		  <button type="button"
-		          class="view-btn week"
-		          data-view="week">
-		   		 주
-		  </button>
-		</div>
-
-    </div>
-  </section>
-
-  <!-- Context Bar -->
-  <section class="context-bar" aria-label="선택 날짜 정보">
-    <div class="context-inner">
-
-      <!-- Selected Date -->
-      <div class="selected-date">
-        <span class="date-main"></span>
-        <span class="date-sub"></span>
+      <div class="dday-list">
+        <button type="button" class="dday-chip">D-3 시험</button>
+        <button type="button" class="dday-chip">D-12 여행</button>
       </div>
 
-      <!-- D-Day Area -->
-      <div class="dday-area">
-        <button type="button" class="dday-btn prev" aria-label="이전 D-Day">‹</button>
-
-        <div class="dday-list">
-          <div class="dday-item">D-3 시험</div>
-          <div class="dday-item">D-12 여행</div>
-        </div>
-
-        <button type="button" class="dday-btn next" aria-label="다음 D-Day">›</button>
-      </div>
-
+      <button type="button" class="dday-nav next" aria-label="다음 D-Day">›</button>
     </div>
-  </section>
+
+  </div>
+</section>

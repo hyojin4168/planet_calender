@@ -4,42 +4,40 @@ document.addEventListener("DOMContentLoaded", () => {
      State
   ===================== */
   const today = new Date();
-
-  let currentYear  = today.getFullYear();
-  let currentMonth = today.getMonth(); // 0~11
-  let selectedDay  = today.getDate();
-
-  let viewMode = "month"; // "month" | "week"
   let currentDate = new Date(today);
+  let selectedDate = null;
+  let viewMode = "month";
 
-  const weekNames = ["일", "월", "화", "수", "목", "금", "토"];
+  /* =====================
+     Schedule Data (임시)
+  ===================== */
+  const schedules = {
+    "2026-02-03": [{ title: "시험" }],
+    "2026-02-12": [{ title: "여행" }],
+    "2026-02-18": [{ title: "회의" }]
+  };
 
   /* =====================
      DOM
   ===================== */
-  const yearEl  = document.querySelector(".current-date .year");
-  const monthEl = document.querySelector(".current-date .month");
-
+  const yearEl  = document.querySelector(".ym-btn .year");
+  const monthEl = document.querySelector(".ym-btn .month");
   const dateGrid = document.querySelector(".date-grid");
-  const dateMain = document.querySelector(".date-main");
-  const dateSub  = document.querySelector(".date-sub");
-
   const viewButtons = document.querySelectorAll(".view-btn");
 
-  if (!dateGrid) return;
+  // 🔥 일정 패널 DOM
+  const schedulePanel = document.querySelector(".schedule-panel");
+  const scheduleTitle = document.querySelector(".schedule-title");
+  const scheduleList  = document.querySelector(".schedule-list");
+
+  if (!dateGrid || !yearEl || !monthEl) return;
 
   /* =====================
-     Header / Context
+     Utils
   ===================== */
-  function updateHeader(year, month) {
-    if (!yearEl || !monthEl) return;
-    yearEl.textContent  = year;
-    monthEl.textContent = String(month + 1).padStart(2, "0");
-  }
-
-  function updateContext(date) {
-    dateMain.textContent = `${date.getMonth() + 1}월 ${date.getDate()}일`;
-    dateSub.textContent  = `(${weekNames[date.getDay()]})`;
+  function updateHeader(date) {
+    yearEl.textContent  = date.getFullYear();
+    monthEl.textContent = String(date.getMonth() + 1).padStart(2, "0");
   }
 
   function isSameDate(a, b) {
@@ -48,17 +46,79 @@ document.addEventListener("DOMContentLoaded", () => {
            a.getDate() === b.getDate();
   }
 
+  function getDateKey(date) {
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, "0");
+    const d = String(date.getDate()).padStart(2, "0");
+    return `${y}-${m}-${d}`;
+  }
+
+  function formatDateTitle(date) {
+    return `${date.getMonth() + 1}월 ${date.getDate()}일`;
+  }
+
+  function moveMonth(dir) {
+    const y = currentDate.getFullYear();
+    const m = currentDate.getMonth();
+    const d = currentDate.getDate();
+    const lastDay = new Date(y, m + dir + 1, 0).getDate();
+    currentDate = new Date(y, m + dir, Math.min(d, lastDay));
+  }
+
   /* =====================
-     Month Render
+     Schedule List Render
   ===================== */
-  function renderMonth(year, month) {
+  function renderScheduleList(date) {
+  if (!schedulePanel) return;
+
+  const key = getDateKey(date);
+  const daySchedules = schedules[key];
+
+  scheduleTitle.textContent = formatDateTitle(date);
+  scheduleList.innerHTML = "";
+  schedulePanel.hidden = false;
+
+  // 🔥 추가
+  schedulePanel.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+
+  if (!daySchedules || daySchedules.length === 0) {
+    const li = document.createElement("li");
+    li.className = "schedule-empty";
+    li.textContent = "일정이 없습니다.";
+    scheduleList.appendChild(li);
+    return;
+  }
+
+  daySchedules.forEach(item => {
+    const li = document.createElement("li");
+    li.className = "schedule-item";
+    li.textContent = item.title;
+    scheduleList.appendChild(li);
+  });
+}
+
+  function hideSchedulePanel() {
+    if (schedulePanel) {
+      schedulePanel.hidden = true;
+    }
+  }
+
+  /* =====================
+     Render Month
+  ===================== */
+  function renderMonth() {
     dateGrid.innerHTML = "";
     dateGrid.classList.remove("week");
 
-    updateHeader(year, month);
+    updateHeader(currentDate);
 
-    const firstDay = new Date(year, month, 1).getDay();
-    const lastDate = new Date(year, month + 1, 0).getDate();
+    const y = currentDate.getFullYear();
+    const m = currentDate.getMonth();
+    const firstDay = new Date(y, m, 1).getDay();
+    const lastDate = new Date(y, m + 1, 0).getDate();
 
     for (let i = 0; i < firstDay; i++) {
       const empty = document.createElement("div");
@@ -67,59 +127,60 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     for (let day = 1; day <= lastDate; day++) {
-      const cell = createDateCell(year, month, day);
+      const cellDate = new Date(y, m, day);
+      const cell = document.createElement("div");
+      cell.className = "date-cell";
+
+      const num = document.createElement("span");
+      num.className = "date-num";
+      num.textContent = day;
+      cell.appendChild(num);
+
+      if (isSameDate(cellDate, today)) {
+        cell.classList.add("today");
+      }
+
+      if (selectedDate && isSameDate(cellDate, selectedDate)) {
+        cell.classList.add("active");
+      } else if (
+        !selectedDate &&
+        isSameDate(cellDate, today) &&
+        cellDate.getMonth() === currentDate.getMonth() &&
+        cellDate.getFullYear() === currentDate.getFullYear()
+      ) {
+        cell.classList.add("active");
+      }
+
+      // 일정 점
+      const key = getDateKey(cellDate);
+      if (schedules[key]) {
+        const dot = document.createElement("span");
+        dot.className = "event-dot";
+        cell.appendChild(dot);
+      }
+
+      cell.onclick = () => {
+        selectedDate = new Date(cellDate);
+        currentDate = new Date(cellDate);
+        renderMonth();
+        renderScheduleList(cellDate);   // 🔥 핵심
+      };
+
       dateGrid.appendChild(cell);
     }
-
-    updateContext(new Date(year, month, selectedDay));
-  }
-
-  function createDateCell(year, month, day) {
-    const cell = document.createElement("div");
-    cell.className = "date-cell";
-
-    const num = document.createElement("span");
-    num.className = "date-num";
-    num.textContent = day;
-    cell.appendChild(num);
-
-    if (
-      year === today.getFullYear() &&
-      month === today.getMonth() &&
-      day === today.getDate()
-    ) {
-      cell.classList.add("today");
-    }
-
-    if (day === selectedDay) {
-      cell.classList.add("active");
-    }
-
-    cell.addEventListener("click", () => {
-      selectedDay = day;
-      currentDate = new Date(year, month, day);
-
-      document.querySelectorAll(".date-cell")
-        .forEach(c => c.classList.remove("active"));
-
-      cell.classList.add("active");
-      updateContext(currentDate);
-    });
-
-    return cell;
   }
 
   /* =====================
-     Week Render
+     Render Week
   ===================== */
-  function renderWeek(date) {
+  function renderWeek() {
     dateGrid.innerHTML = "";
     dateGrid.classList.add("week");
 
-    updateHeader(date.getFullYear(), date.getMonth());
+    updateHeader(currentDate);
 
-    const start = new Date(date);
-    start.setDate(date.getDate() - date.getDay()); // 일요일 기준
+    const start = new Date(currentDate);
+    start.setDate(currentDate.getDate() - currentDate.getDay());
 
     for (let i = 0; i < 7; i++) {
       const d = new Date(start);
@@ -133,25 +194,34 @@ document.addEventListener("DOMContentLoaded", () => {
       num.textContent = d.getDate();
       cell.appendChild(num);
 
-      if (isSameDate(d, date)) {
+      if (isSameDate(d, today)) {
+        cell.classList.add("today");
+      }
+
+      if (selectedDate && isSameDate(d, selectedDate)) {
         cell.classList.add("active");
       }
 
-      cell.addEventListener("click", () => {
-        currentDate = d;
-        selectedDay = d.getDate();
-        updateContext(d);
-        renderWeek(d);
-      });
+      const key = getDateKey(d);
+      if (schedules[key]) {
+        const dot = document.createElement("span");
+        dot.className = "event-dot";
+        cell.appendChild(dot);
+      }
+
+      cell.onclick = () => {
+        selectedDate = new Date(d);
+        currentDate = new Date(d);
+        renderWeek();
+        renderScheduleList(d);          // 🔥 핵심
+      };
 
       dateGrid.appendChild(cell);
     }
-
-    updateContext(date);
   }
 
   /* =====================
-     View Toggle (월 / 주)
+     View Toggle
   ===================== */
   viewButtons.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -159,71 +229,42 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.classList.add("active");
 
       viewMode = btn.dataset.view;
+      hideSchedulePanel();
+      selectedDate = null;
 
-      if (viewMode === "month") {
-        renderMonth(currentYear, currentMonth);
-      } else {
-        currentDate = new Date(currentYear, currentMonth, selectedDay);
-        renderWeek(currentDate);
-      }
+      viewMode === "month" ? renderMonth() : renderWeek();
     });
   });
 
   /* =====================
-     Swipe Control
+     Swipe
   ===================== */
   let startX = 0;
-  let currentX = 0;
-  let isSwiping = false;
-  const SWIPE_DISTANCE = 60;
 
   dateGrid.addEventListener("pointerdown", e => {
     startX = e.clientX;
-    currentX = startX;
-    isSwiping = true;
     dateGrid.setPointerCapture(e.pointerId);
   });
 
-  dateGrid.addEventListener("pointermove", e => {
-    if (!isSwiping) return;
-    currentX = e.clientX;
-  });
+  dateGrid.addEventListener("pointerup", e => {
+    const diff = startX - e.clientX;
+    if (Math.abs(diff) < 60) return;
 
-  dateGrid.addEventListener("pointerup", () => {
-    if (!isSwiping) return;
-    isSwiping = false;
-
-    const diff = startX - currentX;
-    if (Math.abs(diff) < SWIPE_DISTANCE) return;
+    selectedDate = null;
+    hideSchedulePanel();
 
     if (viewMode === "month") {
-      if (diff > 0) {
-        currentMonth++;
-        if (currentMonth > 11) {
-          currentMonth = 0;
-          currentYear++;
-        }
-      } else {
-        currentMonth--;
-        if (currentMonth < 0) {
-          currentMonth = 11;
-          currentYear--;
-        }
-      }
-      renderMonth(currentYear, currentMonth);
+      moveMonth(diff > 0 ? 1 : -1);
+      renderMonth();
     } else {
-      if (diff > 0) {
-        currentDate.setDate(currentDate.getDate() + 7);
-      } else {
-        currentDate.setDate(currentDate.getDate() - 7);
-      }
-      selectedDay = currentDate.getDate();
-      renderWeek(currentDate);
+      currentDate.setDate(currentDate.getDate() + (diff > 0 ? 7 : -7));
+      renderWeek();
     }
   });
 
   /* =====================
      Init
   ===================== */
-  renderMonth(currentYear, currentMonth);
+  hideSchedulePanel();
+  renderMonth();
 });

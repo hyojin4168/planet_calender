@@ -111,7 +111,7 @@
 .calendar-main {
   max-width: 1200px;
   margin: 50px auto;
-  padding: 0 16px 90px; 
+  padding: 0 16px 120px; 
 }
 
 .calendar-card {
@@ -125,9 +125,11 @@
    Week Header
 ========================= */
 .week-row {
-  display: grid; /* 🔥 핵심 */
+  display: grid; 
   grid-template-columns: repeat(7, 1fr);
   margin-bottom: 10px;
+  position: relative;
+  z-index: 2;
 }
 
 .week {
@@ -146,12 +148,14 @@
 }
 
 /* =========================
-   Date Grid (🔥 중요)
+   Date Grid 
 ========================= */
 .date-grid {
-  display: grid; /* 🔥 이게 없으면 세로로 나옴 */
+  display: grid; 
   grid-template-columns: repeat(7, 1fr);
   gap: 10px;
+  position: relative;
+  z-index: 2;
 }
 
 .date-grid.week {
@@ -257,6 +261,31 @@
   color: #6b7280;
 }
 
+/* 빈 셀 */
+.date-cell.empty {
+  background: #fafafa;
+}
+
+/* 오늘 */
+.date-cell.today {
+  color: #4f46e5;
+  font-weight: 700;
+}
+
+/* 선택 */
+.date-cell.active {
+  background: #eef2ff;
+  border-radius: 8px;
+}
+
+/* schedule-panel은 JS로만 제어 */
+.schedule-panel {
+  display: block;
+}
+
+.schedule-panel[hidden] {
+  display: none;
+}
 
 /* =========================
    Mobile
@@ -277,10 +306,6 @@
   .view-toggle .view-btn {
     padding: 6px 10px;
     font-size: 13px;
-  }
-
-  .dday-nav {
-    display: none;
   }
 
   .dday-wrap {

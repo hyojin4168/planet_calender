@@ -27,7 +27,7 @@
   </section>
   
   <!-- 일정 목록 패널 -->
-	<section class="schedule-panel" hidden>
+	<section class="schedule-panel">
 	  <div class="schedule-header">
 	    <h3 class="schedule-title"></h3>
 	  </div>
@@ -38,4 +38,5 @@
 </main>
 
 <script src="${path}/resources/js/main.js"></script>
+
 <%@ include file="common/footer.jsp" %>

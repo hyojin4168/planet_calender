@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<link rel="stylesheet" href="${path}/resources/css/footer.css">
+<link rel="stylesheet" href="${path}/resources/css/common/footer.css">
 
 <!-- Mobile Bottom Navigation -->
 <nav class="bottom-nav" role="navigation" aria-label="하단 메뉴">

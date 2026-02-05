@@ -12,7 +12,7 @@
   <title>Planet Calendar</title>
 
   <!-- CSS는 무조건 head -->
-  <link rel="stylesheet" href="${path}/resources/css/header.css">
+  <link rel="stylesheet" href="${path}/resources/css/commmon/header.css">
 </head>
 <body>
 

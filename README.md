@@ -194,18 +194,62 @@ Phase 기반 개발을 통해 기능을 점진적으로 확장합니다.
 ## 📂 Project Structure
 
 ```text
-planet-calendar/
-├─ frontend/        # Frontend (VS Code)
-│  ├─ src/
-│  └─ assets/
-│
-├─ backend/         # Backend (STS3 - Spring)
-│  ├─ src/main/java/
-│  ├─ src/main/resources/
-│  └─ pom.xml
-│
-├─ docs/            # API / ERD / 기획 문서
-└─ README.md
+📦 planet_calender
+ ┣ 📂 src/📂main/📂java/
+ ┃ ┗ 📂 net/📂planet/📂calendar/
+ ┃   ┣ 📂 controller/          # 요청 처리 및 화면 이동 제어 (Spring Controller)
+ ┃   ┣ 📂 service/             # 비즈니스 로직 처리
+ ┃   ┣ 📂 dao/                 # 데이터 접근 계층 (DB 연동 예정)
+ ┃   ┗ 📂 dto/                 # 데이터 전달 객체 (DTO)
+ ┃
+ ┣ 📂 src/📂main/📂resources/
+ ┃ ┣ 📂 META-INF/              # 메타 정보
+ ┃ ┣ 📂 prop/                  # 환경 설정 파일
+ ┃ ┃ ┣ 📜 db.properties        # DB 설정 (현재 미연동, 주석 템플릿)
+ ┃ ┃ ┗ 📜 mail.properties      # 메일 설정 (미사용)
+ ┃ ┗ 📜 log4j.xml              # 로그 설정 파일
+ ┃
+ ┣ 📂 src/📂main/📂webapp/
+ ┃ ┣ 📂 resources/             # 정적 리소스
+ ┃ ┃ ┣ 📂 assets/              # 이미지, 아이콘 등 정적 파일
+ ┃ ┃ ┣ 📂 css/
+ ┃ ┃ ┃ ┣ 📂 common/            # 공통 스타일
+ ┃ ┃ ┃ ┃ ┣ 📜 header.css       # 헤더 스타일
+ ┃ ┃ ┃ ┃ ┗ 📜 footer.css       # 푸터 스타일
+ ┃ ┃ ┃ ┣ 📜 calendar.css       # 캘린더 화면 스타일
+ ┃ ┃ ┃ ┣ 📜 dday.css           # D-Day 화면 스타일
+ ┃ ┃ ┃ ┣ 📜 home.css           # 홈 화면 스타일
+ ┃ ┃ ┃ ┣ 📜 menu.css           # 메뉴 화면 스타일
+ ┃ ┃ ┃ ┣ 📜 schedule.css       # 일정 화면 스타일
+ ┃ ┃ ┃ ┗ 📜 todo.css           # 할 일(To-Do) 화면 스타일
+ ┃ ┃ ┗ 📂 js/
+ ┃ ┃   ┗ 📜 main.js             # 캘린더 UI 및 화면 동작 처리
+ ┃
+ ┃ ┗ 📂 WEB-INF/
+ ┃   ┣ 📂 classes/             # 컴파일된 클래스
+ ┃   ┣ 📂 spring/              # Spring MVC 설정
+ ┃   ┣ 📂 views/               # JSP 뷰 페이지
+ ┃   ┃ ┣ 📂 calendar/
+ ┃   ┃ ┃ ┗ 📜 calendar.jsp     # 월/주 단위 캘린더 메인 화면
+ ┃   ┃ ┣ 📂 common/
+ ┃   ┃ ┃ ┣ 📜 header.jsp       # 공통 헤더
+ ┃   ┃ ┃ ┗ 📜 footer.jsp       # 공통 푸터
+ ┃   ┃ ┣ 📂 dday/
+ ┃   ┃ ┃ ┗ 📜 dday.jsp         # D-Day 목록 관리 화면
+ ┃   ┃ ┣ 📂 menu/
+ ┃   ┃ ┃ ┗ 📜 menu.jsp         # 전체 기능 메뉴 화면
+ ┃   ┃ ┣ 📂 schedule/
+ ┃   ┃ ┃ ┗ 📜 schedule_form.jsp note: 일정 등록/수정 화면
+ ┃   ┃ ┣ 📂 todo/
+ ┃   ┃ ┃ ┗ 📜 todo.jsp         # 할 일(To-Do) 관리 화면
+ ┃   ┃ ┗ 📜 home.jsp           # 최초 진입 홈 화면
+ ┃   ┗ 📜 web.xml              # 웹 애플리케이션 설정
+ ┃
+ ┣ 📂 src/📂test/              # 테스트 코드
+ ┣ 📂 target/                  # 빌드 결과물
+ ┣ 📜 Planet_calender.sql      # 테이블 생성 및 초기 데이터용 SQL 파일
+ ┣ 📜 pom.xml                  # Maven 의존성 및 빌드 설정
+ ┗ 📜 README.md
 ```
 
 ## 🌿 Branch Strategy

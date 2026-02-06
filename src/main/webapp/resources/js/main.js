@@ -208,6 +208,7 @@ document.addEventListener("DOMContentLoaded", function () {
   /* =====================
      Swipe
   ===================== */
+  
   let sx = 0, sy = 0, swiping = false;
 
   dateGrid.addEventListener("pointerdown", e => {
@@ -243,6 +244,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     render();
   });
+  
+  document.addEventListener("DOMContentLoaded", () => {
+  const toast = document.querySelector(".guide-toast");
+  const moreBtn = document.querySelector(".more-btn");
+
+  if (!toast || !moreBtn) return;
+
+  const KEY = "planet_more_guide_shown";
+
+  // 처음 방문한 경우만
+  if (!localStorage.getItem(KEY)) {
+    toast.hidden = false;
+
+    // 4초 후 자동 제거
+    setTimeout(() => {
+      toast.hidden = true;
+    }, 4000);
+
+    localStorage.setItem(KEY, "true");
+  }
+
+  // 더보기 누르면 즉시 토스트 제거
+  moreBtn.addEventListener("click", () => {
+    toast.hidden = true;
+  });
+});
 
   /* =====================
      Init
@@ -250,3 +277,4 @@ document.addEventListener("DOMContentLoaded", function () {
   hidePanel();
   render();
 });
+  

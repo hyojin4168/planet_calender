@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 /* =========================
    Design Tokens
 ========================= */
@@ -8,136 +10,74 @@
   --text-main: #1f2937;
   --text-sub: #6b7280;
 
-  --accent: #6366f1;        /* 은은한 포인트 (보라/인디고) */
+  --accent: #6366f1;
   --accent-soft: #eef2ff;
 
   --radius: 14px;
 }
 
 /* =========================
-   Global Header
+   Calendar Toolbar (ONE LINE)
 ========================= */
 
-.global-header {
+.calendar-toolbar {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: var(--bg-main);
+  background: var(--bg-sub);
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.global-inner {
+.toolbar-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 18px 20px;
+  padding: 14px 20px;
 
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* App Title */
-.app-title {
-  margin: 0;
-  font-size: 0;
-}
-
-.app-title-link {
-  font-size: 20px;
-  font-weight: 800;
-  letter-spacing: -0.4px;
-  color: var(--text-main);
-  text-decoration: none;
-}
-
-/* Actions */
-.global-actions {
-  display: flex;
-  gap: 10px;
-}
-
-.icon-btn {
-  width: 40px;
-  height: 40px;
-
-  border: none;
-  border-radius: 50%;
-  background: var(--bg-sub);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  cursor: pointer;
-  transition: background-color .2s ease,
-              transform .15s ease;
-}
-
-.icon-btn .icon {
-  font-size: 18px;
-  color: var(--text-sub);
-}
-
-.icon-btn:hover {
-  background: var(--accent-soft);
-}
-
-.icon-btn:active {
-  transform: scale(0.92);
+  align-items: center;   /* 🔥 수직 정렬 기준 */
+  gap: 12px;
 }
 
 /* =========================
-   Calendar Header
+   Year / Month
 ========================= */
 
-.calendar-header {
-  background: var(--bg-sub);
-}
-
-.calendar-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 16px 20px;
+.ym-btn {
+  height: 36px;
+  padding: 0 14px;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;
-}
 
-/* Prev / Next */
-.cal-btn {
+  background: var(--bg-main);
   border: none;
-  background: transparent;
-  font-size: 22px;
-  color: var(--text-sub);
-  cursor: pointer;
-}
+  border-radius: 999px;
 
-.cal-btn:hover {
-  color: var(--accent);
-}
-
-/* Current Date */
-.current-date {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--text-main);
-  margin: 0;
+  white-space: nowrap;
 }
 
-/* View Toggle */
+/* =========================
+   View Toggle (월 / 주)
+========================= */
+
 .view-toggle {
+  height: 36px;
+  padding: 4px;
+
   display: flex;
   align-items: center;
-  gap: 0;
+
   background: #f1f3f5;
   border-radius: 999px;
-  padding: 4px;
 }
 
 .view-btn {
   min-width: 40px;
-  height: 32px;
+  height: 28px;
   padding: 0 12px;
 
   border: none;
@@ -146,7 +86,7 @@
 
   font-size: 14px;
   font-weight: 600;
-  color: #6b7280;
+  color: var(--text-sub);
 
   display: flex;
   align-items: center;
@@ -156,61 +96,35 @@
 }
 
 .view-btn.active {
-  background: #6366f1; /* Planet 보라 */
-  color: #fff;
+  background: var(--accent);
+  color: #ffffff;
 }
 
 /* =========================
-   Context Bar
+   D-Day Area (KEY)
 ========================= */
 
-.context-bar {
+.dday-wrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  padding: 4px;
+  height: 36px;
+
   background: var(--bg-main);
+  border-radius: 999px;
 }
 
-.context-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 14px 20px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.dday-scroll {
+  overflow-x: auto;
+  white-space: nowrap;
+  min-width: 0;    
+  max-width: 200px;   /* ← 여기서 잘리는 기준 결정 */
 }
 
-/* Selected Date */
-.selected-date {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-main);
-}
-
-.date-sub {
-  margin-left: 4px;
-  font-size: 13px;
-  color: var(--text-sub);
-}
-
-/* =========================
-   D-Day Area 
-========================= */
-
-.dday-area {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.dday-btn {
-  border: none;
-  background: transparent;
-  font-size: 18px;
-  color: var(--text-sub);
-  cursor: pointer;
-}
-
-.dday-btn:hover {
-  color: var(--accent);
+.dday-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 .dday-list {
@@ -218,17 +132,139 @@
   gap: 6px;
 }
 
-.dday-item {
-  padding: 6px 12px;
-  border-radius: 12px;
+.dday-nav {
+  width: 70px;
+  height: 28px;
+  flex-shrink: 0;
 
-  background: var(--accent-soft);
+  border: none;
+  background: transparent;
+
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-sub);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.dday-nav:hover {
   color: var(--accent);
+}
+
+.dday-list {
+  display: flex;
+  gap: 6px;
+
+  overflow-x: auto;      
+  white-space: nowrap;
+
+  scrollbar-width: none;        
+}
+
+.dday-list::-webkit-scrollbar {
+  display: none;                 
+}
+
+.dday-chip {
+  height: 28px;
+
+  border-radius: 999px;
 
   font-size: 13px;
   font-weight: 600;
-  line-height: 1;
-  white-space: nowrap;
+}
+
+
+/* =========================
+   More Button (☰ 더보기)
+========================= */
+
+.more-btn {
+  height: 36px;
+  padding: 0 10px;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.more-btn:hover {
+  color: var(--accent);
+}
+
+.more-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-sub);
+}
+
+/* =========================
+   D-Day Overlay Menu
+========================= */
+
+.dday-overlay {
+  position: absolute;
+  bottom: 100%;          /* ✅ D-Day 바로 위 */
+  right: 0;
+  margin-bottom: 8px;
+
+  min-width: 160px;
+  padding: 6px 0;
+
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+
+  z-index: 50;
+}
+
+.dday-overlay a {
+  display: block;
+  padding: 10px 14px;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+.dday-overlay a:hover {
+  background: var(--accent-soft);
+}
+
+/* =========================
+   First Visit Guide Toast
+========================= */
+
+.guide-toast {
+  position: fixed;
+  top: 64px;
+  right: 16px;
+  z-index: 3000;
+
+  background: #111827;
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+
+  padding: 10px 14px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
 }
 
 /* =========================
@@ -236,13 +272,27 @@
 ========================= */
 
 @media (max-width: 480px) {
-  .current-date {
-    font-size: 18px;
+  .toolbar-inner {
+    padding: 12px 14px;
+    gap: 10px;
+    flex-wrap: wrap;        
+    row-gap: 8px;
   }
 
-  .context-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+  .ym-btn {
+    font-size: 15px;
+    padding: 0 12px;
   }
+  
+  .dday-wrap {
+ 	 width: 100%;            
+     max-width: 100%;
+	}
+
+  .dday-chip {
+    font-size: 11px;
+    padding: 0 8px;
+
+  }
+
 }

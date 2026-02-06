@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+.menu-page {
+  padding: 16px;
+}
+
+.menu-container h2 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.menu-list a {
+  text-decoration: none;
+  color: #111827;
+  font-weight: 600;
+}

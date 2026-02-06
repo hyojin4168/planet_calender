@@ -12,7 +12,7 @@
   <title>Planet Calendar</title>
 
   <!-- CSS는 무조건 head -->
-  <link rel="stylesheet" href="${path}/resources/css/commmon/header.css">
+  <link rel="stylesheet" href="${path}/resources/css/common/header.css">
 </head>
 <body>
 
@@ -46,16 +46,29 @@
     </div>
 
     <!-- 3) D-Day -->
-    <div class="dday-wrap" aria-label="D-Day 목록">
-      <button type="button" class="dday-nav prev" aria-label="이전 D-Day">‹</button>
+    <div class="dday-wrap">
+	  <button class="dday-nav prev">‹</button>
+	
+	  <div class="dday-scroll">
+	    <div class="dday-list">
+	      <button class="dday-chip">D-3 시험</button>
+	      <button class="dday-chip">D-12 여행</button>
+	    </div>
+	  </div>
+	
+	  <button class="dday-nav next">›</button>
+	</div>
 
-      <div class="dday-list">
-        <button type="button" class="dday-chip">D-3 시험</button>
-        <button type="button" class="dday-chip">D-12 여행</button>
-      </div>
-
-      <button type="button" class="dday-nav next" aria-label="다음 D-Day">›</button>
-    </div>
-
+    <!-- More Button -->
+	<button type="button" class="more-btn" aria-label="더보기">
+	  ☰
+	</button>
+	    
   </div>
 </section>
+
+<!-- First Visit Guide Toast -->
+<div class="guide-toast" hidden>
+  ☰ 더보기에서<br>
+  가계부 · 메모 · 설정을 사용할 수 있어요
+</div>

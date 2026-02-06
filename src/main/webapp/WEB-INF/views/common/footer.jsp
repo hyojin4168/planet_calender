@@ -4,21 +4,26 @@
 <link rel="stylesheet" href="${path}/resources/css/common/footer.css">
 
 <!-- Mobile Bottom Navigation -->
-<nav class="bottom-nav" role="navigation" aria-label="하단 메뉴">
-  <button class="nav-btn active" data-nav="home" aria-label="홈">
+<nav class="bottom-nav">
+
+  <a href="${path}/home"
+     class="nav-btn ${currentPage eq 'home' ? 'active' : ''}">
     <span class="icon">🏠</span>
     <span class="label">홈</span>
-  </button>
+  </a>
 
-  <button class="nav-btn" data-nav="calendar" aria-label="캘린더">
+  <a href="${path}/calendar"
+     class="nav-btn ${currentPage eq 'calendar' ? 'active' : ''}">
     <span class="icon">📅</span>
     <span class="label">캘린더</span>
-  </button>
+  </a>
 
-  <button class="nav-btn" data-nav="menu" aria-label="메뉴">
+  <a href="${path}/menu"
+     class="nav-btn ${currentPage eq 'menu' ? 'active' : ''}">
     <span class="icon">🗂</span>
     <span class="label">메뉴</span>
-  </button>
+  </a>
+
 </nav>
 
 </body>

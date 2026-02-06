@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+/* =========================
+   Todo Page
+========================= */
+
+.todo-page {
+  padding: 16px;
+  padding-bottom: 88px;
+}
+
+/* =========================
+   Header
+========================= */
+
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.page-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.btn-add {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+/* =========================
+   Date Group
+========================= */
+
+.todo-date-group {
+  margin-bottom: 20px;
+}
+
+.todo-date {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+/* =========================
+   List
+========================= */
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.todo-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: default;
+}
+
+.todo-check input {
+  width: 18px;
+  height: 18px;
+}
+
+.todo-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: #111827;
+}
+
+/* 완료 상태 */
+.todo-item.done .todo-title {
+  text-decoration: line-through;
+  color: #9ca3af;
+}

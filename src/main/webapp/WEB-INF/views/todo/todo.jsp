@@ -30,6 +30,11 @@
             <input type="checkbox" disabled>
             <span class="todo-title">운동하기</span>
           </label>
+          
+          <div class="todo-actions">
+		    <a href="${path}/todo/edit" class="btn-edit">수정</a>
+		    <a href="${path}/todo/delete" class="btn-delete">삭제</a>
+		  </div>
         </li>
 
         <li class="todo-item done">
@@ -37,6 +42,10 @@
             <input type="checkbox" checked disabled>
             <span class="todo-title">약 챙기기</span>
           </label>
+          
+          <div class="todo-actions">
+		    <a href="${path}/todo/delete" class="btn-delete">삭제</a>
+		  </div>
         </li>
       </ul>
 
@@ -52,6 +61,11 @@
             <input type="checkbox" disabled>
             <span class="todo-title">개발 공부 1시간</span>
           </label>
+          
+          <div class="todo-actions">
+		    <a href="${path}/todo/edit" class="btn-edit">수정</a>
+		    <a href="${path}/todo/delete" class="btn-delete">삭제</a>
+		  </div>
         </li>
       </ul>
 

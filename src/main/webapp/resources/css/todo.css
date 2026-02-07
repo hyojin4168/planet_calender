@@ -85,3 +85,51 @@
   text-decoration: line-through;
   color: #9ca3af;
 }
+
+/* =========================
+   Todo Actions
+========================= */
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-edit,
+.btn-delete {
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.btn-edit {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.btn-edit:hover {
+  background: #e5e7eb;
+}
+
+.btn-delete {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.btn-delete:hover {
+  background: #fecaca;
+}
+
+/* 완료된 Todo */
+.todo-item.done .todo-title {
+  color: #9ca3af;
+  text-decoration: line-through;
+}

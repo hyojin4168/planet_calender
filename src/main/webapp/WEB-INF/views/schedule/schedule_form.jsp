@@ -40,9 +40,9 @@
       </div>
 
       <div class="form-actions">
-        <button type="button" class="btn-cancel">취소</button>
-        <button type="button" class="btn-submit">등록</button>
-      </div>
+		  <a href="${path}/calendar" class="btn-cancel">취소</a>
+		  <button type="button" class="btn-submit">등록</button>
+	  </div>
 
     </form>
 

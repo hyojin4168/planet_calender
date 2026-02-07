@@ -1,0 +1,48 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>페이지를 찾을 수 없습니다</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                   "Segoe UI", Roboto, "Apple SD Gothic Neo", sans-serif;
+      background: #f9fafb;
+      color: #1f2937;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .error-box {
+      text-align: center;
+    }
+    h1 {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+    p {
+      color: #6b7280;
+      margin-bottom: 24px;
+    }
+    a {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 8px;
+      background: #6366f1;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-box">
+    <h1>404</h1>
+    <p>요청하신 페이지를 찾을 수 없습니다.</p>
+    <a href="${pageContext.request.contextPath}/">홈으로 이동</a>
+  </div>
+</body>
+</html>

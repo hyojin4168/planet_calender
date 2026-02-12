@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:set var="path" value="${pageContext.request.contextPath}" />
@@ -10,21 +9,24 @@
 <head>
   <meta charset="UTF-8">
   <title>Planet Calendar</title>
-
-  <!-- CSS는 무조건 head -->
   <link rel="stylesheet" href="${path}/resources/css/common/header.css">
 </head>
 <body>
 
-  <!-- Calendar Toolbar (통합 헤더) -->
+<!-- Calendar Toolbar -->
 <section class="calendar-toolbar" aria-label="달력 컨트롤">
   <div class="toolbar-inner">
 
-    <!-- 1) 연/월 -->
-    <button type="button" class="ym-btn" aria-label="연/월 선택">
-      <span class="year"></span>.<span class="month"></span>
-      <span class="ym-caret"></span>
-    </button>
+    <!-- 1) 이전 / 연월 / 다음 -->
+    <div class="calendar-nav">
+      <button type="button" class="nav-btn prev-btn" aria-label="이전">‹</button>
+
+      <button type="button" class="ym-btn" aria-label="연/월 표시">
+        <span class="year"></span>.<span class="month"></span>
+      </button>
+
+      <button type="button" class="nav-btn next-btn" aria-label="다음">›</button>
+    </div>
 
     <!-- 2) 월/주 토글 -->
     <div class="view-toggle" role="tablist" aria-label="보기 전환">
@@ -47,25 +49,35 @@
 
     <!-- 3) D-Day -->
     <div class="dday-wrap">
-	  <button class="dday-nav prev">‹</button>
-	
-	  <div class="dday-scroll">
-	    <div class="dday-list">
-	      <button class="dday-chip">D-3 시험</button>
-	      <button class="dday-chip">D-12 여행</button>
-	    </div>
-	  </div>
-	
-	  <button class="dday-nav next">›</button>
-	</div>
+      <button class="dday-nav prev">‹</button>
 
-    <!-- More Button -->
-	<button type="button" class="more-btn" aria-label="더보기">
-	  ☰
-	</button>
-	    
+      <div class="dday-scroll">
+        <div class="dday-list">
+          <button class="dday-chip">D-3 시험</button>
+          <button class="dday-chip">D-12 여행</button>
+        </div>
+      </div>
+
+      <button class="dday-nav next">›</button>
+    </div>
+
+    <!-- 4) More -->
+    <button type="button" class="more-btn" aria-label="더보기">☰</button>
+
   </div>
 </section>
+
+<!-- Overlay -->
+<div class="menu-overlay" hidden></div>
+
+<!-- Side Menu -->
+<aside class="side-menu" hidden>
+  <nav class="side-menu-inner">
+    <a href="#" class="side-item">가계부</a>
+    <a href="#" class="side-item">메모</a>
+    <a href="#" class="side-item">설정</a>
+  </nav>
+</aside>
 
 <!-- First Visit Guide Toast -->
 <div class="guide-toast" hidden>

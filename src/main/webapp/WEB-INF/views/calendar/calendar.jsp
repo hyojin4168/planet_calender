@@ -41,6 +41,10 @@
 	  
 </main>
 
+<script>
+  const contextPath = "${pageContext.request.contextPath}";
+</script>
+
 <script src="${path}/resources/js/main.js"></script>
 
 <%@ include file="../common/footer.jsp" %>

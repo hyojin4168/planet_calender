@@ -19,7 +19,11 @@
     </p>
 
     <div class="form-actions">
-      <button type="button" class="btn-delete">삭제</button>
+      <button type="button"
+        class="btn-delete"
+        onclick="confirmDelete()">
+		  삭제
+		</button>
       <a href="${path}/dday" class="btn-cancel">취소</a>
     </div>
 
@@ -27,4 +31,12 @@
 
 </main>
 
-<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+<script>
+function confirmDelete() {
+  if (confirm("정말 삭제하시겠습니까?")) {
+    location.href = "${path}/dday";
+  }
+}
+</script>
+
+<%@ include file="../common/footer.jsp" %>

@@ -9,24 +9,45 @@
 
   <section class="dday-form-container">
 
-    <h2 class="page-title">D-Day 등록 / 수정</h2>
+    <h2 class="page-title">
+      <c:choose>
+        <c:when test="${mode == 'edit'}">D-Day 수정</c:when>
+        <c:otherwise>D-Day 등록</c:otherwise>
+      </c:choose>
+    </h2>
 
-    <!-- 나중에 action / method만 바꾸면 바로 백엔드 연결 -->
-    <form class="dday-form">
+    <form class="dday-form" method="post" action="${path}/dday">
+
+      <input type="hidden" name="mode" value="${mode}" />
 
       <div class="form-group">
         <label>제목</label>
-        <input type="text" placeholder="예: 시험">
+        <input type="text"
+               name="title"
+               value="${title}"
+               placeholder="예: 시험"
+               required>
       </div>
 
       <div class="form-group">
         <label>날짜</label>
-        <input type="date">
+        <input type="date"
+               name="date"
+               value="${date}"
+               required>
       </div>
 
       <div class="form-actions">
-        <button type="submit" class="btn-save">저장</button>
+
+        <button type="submit" class="btn-save">
+          <c:choose>
+            <c:when test="${mode == 'edit'}">수정하기</c:when>
+            <c:otherwise>저장하기</c:otherwise>
+          </c:choose>
+        </button>
+
         <a href="${path}/dday" class="btn-cancel">취소</a>
+
       </div>
 
     </form>
@@ -35,4 +56,4 @@
 
 </main>
 
-<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+<%@ include file="../common/footer.jsp" %>

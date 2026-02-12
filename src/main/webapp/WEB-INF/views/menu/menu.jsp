@@ -25,7 +25,7 @@
 
     <ul class="menu-list">
       <li><a href="${path}/calendar">캘린더</a></li>
-      <li><a href="${path}/schedule">일정 등록</a></li>
+      <li><a href="${path}/schedule/create">일정 등록</a></li>
       <li><a href="${path}/dday">D-Day</a></li>
       <li><a href="${path}/todo">To-Do</a></li>
       <li><a href="${path}/settings">설정</a></li>

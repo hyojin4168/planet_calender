@@ -11,29 +11,40 @@
 
   <section class="todo-form-container">
 
-    <h2 class="page-title">To-Do 등록 / 수정</h2>
+   <h2>
+  <c:choose>
+    <c:when test="${mode == 'edit'}">할 일 수정</c:when>
+    <c:otherwise>할 일 등록</c:otherwise>
+  </c:choose>
+</h2>
 
-    <form class="todo-form">
+<form method="post" action="${path}/todo">
 
-      <div class="form-group">
-        <label>할 일</label>
-        <input type="text" placeholder="할 일을 입력하세요">
-      </div>
+  <input type="hidden" name="mode" value="${mode}" />
 
-      <div class="form-group">
-        <label>날짜</label>
-        <input type="date">
-      </div>
+  <div class="form-group">
+    <label>내용</label>
+    <input type="text"
+           name="title"
+           value="${title}"
+           required>
+  </div>
 
-      <div class="form-actions">
-        <button type="button" class="btn-save">저장</button>
-        <a href="${path}/todo" class="btn-cancel">취소</a>
-      </div>
+	 <div class="form-actions">
+		  <button type="submit" class="btn-save">
+		    <c:choose>
+		      <c:when test="${mode == 'edit'}">수정하기</c:when>
+		      <c:otherwise>저장하기</c:otherwise>
+		    </c:choose>
+		  </button>
+		
+		  <a href="${path}/todo" class="btn-cancel">취소</a>
+	</div>
 
-    </form>
+  </form>
 
   </section>
 
 </main>
 
-<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+<%@ include file="../common/footer.jsp" %>

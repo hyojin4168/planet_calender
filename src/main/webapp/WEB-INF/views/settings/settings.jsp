@@ -41,6 +41,22 @@
         <span class="item-title">데이터 초기화</span>
         <span class="item-desc">모든 일정 및 D-Day 삭제</span>
       </li>
+      
+      <li class="settings-item">
+        <div>
+          <div class="item-title">앱 정보</div>
+          <div class="item-desc">Planet Calendar v1.0</div>
+        </div>
+      </li>
+      
+      <li class="setting-item danger">
+        <div>
+          <div class="item-title">로그아웃</div>
+          <div class="item-desc">현재 계정에서 로그아웃합니다.</div>
+        </div>
+        <button class="btn-logout" onclick="logout()">로그아웃</button>
+      </li>
+      
     </ul>
 
     <p class="settings-note">
@@ -50,6 +66,23 @@
   </section>
 
 </main>
+
+<script>
+function resetData() {
+  if (confirm("정말 데이터를 초기화하시겠습니까?")) {
+    localStorage.clear();
+    alert("초기화되었습니다.");
+    location.reload();
+  }
+}
+
+function logout() {
+	  if (confirm("로그아웃하시겠습니까?")) {
+	    alert("로그아웃되었습니다.");
+	    location.href = "${path}/calendar";
+	  }
+	}
+</script>
 
 <%@ include file="../common/footer.jsp" %>
 </body>

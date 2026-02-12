@@ -205,17 +205,87 @@
 }
 
 /* =========================
-   Responsive
+   Tablet (768px 이하)
 ========================= */
-@media (max-width: 600px) {
-  .dday-item {
+@media (max-width: 768px) {
+
+  .dday-page {
+    padding: 24px 16px 60px;
+  }
+
+  .dday-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
   }
 
+  .page-title {
+    font-size: 20px;
+  }
+
+  .dday-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .dday-count {
+    font-size: 16px;
+  }
+
   .dday-actions {
     width: 100%;
     justify-content: flex-end;
+  }
+
+  .btn-add {
+    align-self: flex-end;
+  }
+}
+
+
+/* =========================
+   Mobile (480px 이하)
+========================= */
+@media (max-width: 480px) {
+
+  .dday-page {
+    padding: 20px 14px 50px;
+  }
+
+  .page-title {
+    font-size: 18px;
+  }
+
+  .dday-item {
+    border-radius: 16px;
+  }
+
+  .dday-count {
+    font-size: 15px;
+  }
+
+  .dday-title {
+    font-size: 14px;
+  }
+
+  .dday-date {
+    font-size: 12px;
+  }
+
+  .btn-add {
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .btn-save,
+  .btn-cancel {
+    width: 100%;
   }
 }

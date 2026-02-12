@@ -18,36 +18,38 @@
       <a href="${path}/dday/new" class="btn-add">+ 등록</a>
     </div>
 
-    <ul class="dday-list">
+   <ul class="dday-list">
 
-      <!-- Phase 1: 정적 더미 -->
-      <li class="dday-item">
-        <span class="dday-count">D-3</span>
-        <div class="dday-info">
-          <span class="dday-title">시험</span>
-          <span class="dday-date">2026-02-03</span>
-        </div>
-
-        <div class="dday-actions">
-          <a href="${path}/dday/edit" class="btn-edit">수정</a>
-          <a href="${path}/dday/delete" class="btn-delete">삭제</a>
-        </div>
+  <c:choose>
+    <c:when test="${empty ddayList}">
+      <li class="dday-empty">
+        등록된 D-Day가 없습니다.
       </li>
+    </c:when>
 
-      <li class="dday-item">
-        <span class="dday-count">D-12</span>
-        <div class="dday-info">
-          <span class="dday-title">여행</span>
-          <span class="dday-date">2026-02-12</span>
-        </div>
+    <c:otherwise>
+      <c:forEach var="item" items="${ddayList}" varStatus="status">
+        <li class="dday-item">
 
-        <div class="dday-actions">
-          <a href="${path}/dday/edit" class="btn-edit">수정</a>
-          <a href="${path}/dday/delete" class="btn-delete">삭제</a>
-        </div>
-      </li>
+          <span class="dday-count">${item.count}</span>
 
-    </ul>
+          <div class="dday-info">
+            <span class="dday-title">${item.title}</span>
+            <span class="dday-date">${item.date}</span>
+          </div>
+
+          <div class="dday-actions">
+            <a href="${path}/dday/edit?idx=${status.index}" class="btn-edit">수정</a>
+            <a href="${path}/dday/delete?idx=${status.index}" class="btn-delete">삭제</a>
+          </div>
+
+        </li>
+      </c:forEach>
+    </c:otherwise>
+
+  </c:choose>
+
+</ul>
 
   </section>
 

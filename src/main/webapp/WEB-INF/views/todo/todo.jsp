@@ -18,61 +18,64 @@
       <a href="${path}/todo/new" class="btn-add">+ 추가</a>
     </div>
 
-    <!-- 날짜 기준 그룹 -->
-    <div class="todo-date-group">
+    <!-- 빈 상태 처리 -->
+    <c:choose>
 
-      <h3 class="todo-date">2026-02-03</h3>
+      <c:when test="${empty todoGroups}">
+        <p class="todo-empty">등록된 할 일이 없습니다.</p>
+      </c:when>
 
-      <ul class="todo-list">
-        <!-- Phase 1: 정적 더미 -->
-        <li class="todo-item">
-          <label class="todo-check">
-            <input type="checkbox" disabled>
-            <span class="todo-title">운동하기</span>
-          </label>
-          
-          <div class="todo-actions">
-		    <a href="${path}/todo/edit" class="btn-edit">수정</a>
-		    <a href="${path}/todo/delete" class="btn-delete">삭제</a>
-		  </div>
-        </li>
+      <c:otherwise>
 
-        <li class="todo-item done">
-          <label class="todo-check">
-            <input type="checkbox" checked disabled>
-            <span class="todo-title">약 챙기기</span>
-          </label>
-          
-          <div class="todo-actions">
-		    <a href="${path}/todo/delete" class="btn-delete">삭제</a>
-		  </div>
-        </li>
-      </ul>
+        <!-- 날짜 그룹 반복 -->
+        <c:forEach var="group" items="${todoGroups}" varStatus="gStatus">
 
-    </div>
+          <div class="todo-date-group">
 
-    <div class="todo-date-group">
+            <h3 class="todo-date">${group.date}</h3>
 
-      <h3 class="todo-date">2026-02-04</h3>
+            <ul class="todo-list">
 
-      <ul class="todo-list">
-        <li class="todo-item">
-          <label class="todo-check">
-            <input type="checkbox" disabled>
-            <span class="todo-title">개발 공부 1시간</span>
-          </label>
-          
-          <div class="todo-actions">
-		    <a href="${path}/todo/edit" class="btn-edit">수정</a>
-		    <a href="${path}/todo/delete" class="btn-delete">삭제</a>
-		  </div>
-        </li>
-      </ul>
+              <!-- ✅ 날짜별 할 일 반복 -->
+              <c:forEach var="item" items="${group.todos}" varStatus="status">
 
-    </div>
+                <li class="todo-item ${item.done ? 'done' : ''}">
+
+                  <label class="todo-check">
+                    <input type="checkbox"
+				       class="todo-checkbox"
+				       ${item.done ? 'checked' : ''}>
+                    <span class="todo-title">${item.title}</span>
+                  </label>
+
+                  <div class="todo-actions">
+                    <a href="${path}/todo/edit?date=${group.date}&idx=${status.index}"
+                       class="btn-edit">수정</a>
+					<a href="${path}/todo/delete?date=${group.date}&idx=${status.index}"
+					   class="btn-delete"
+					   onclick="return confirm('삭제하시겠습니까?');">
+					   삭제
+					</a>
+                  </div>
+
+                </li>
+
+              </c:forEach>
+
+            </ul>
+
+          </div>
+
+        </c:forEach>
+
+      </c:otherwise>
+
+    </c:choose>
 
   </section>
 
 </main>
 
-<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+<script src="${path}/resources/js/todo.js"></script>
+
+<%@ include file="../common/footer.jsp" %>

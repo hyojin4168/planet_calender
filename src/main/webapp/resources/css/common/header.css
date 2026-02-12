@@ -1,298 +1,229 @@
 @charset "UTF-8";
 
 /* =========================
-   Design Tokens
-========================= */
-:root {
-  --bg-main: #ffffff;
-  --bg-sub: #f7f8fa;
-
-  --text-main: #1f2937;
-  --text-sub: #6b7280;
-
-  --accent: #6366f1;
-  --accent-soft: #eef2ff;
-
-  --radius: 14px;
-}
-
-/* =========================
-   Calendar Toolbar (ONE LINE)
+   Base Toolbar
 ========================= */
 
 .calendar-toolbar {
   position: sticky;
   top: 0;
-  z-index: 1000;
-  background: var(--bg-sub);
+  background: #ffffff;
   border-bottom: 1px solid #e5e7eb;
+  padding: 12px 20px;
+  z-index: 50;
 }
 
 .toolbar-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 14px 20px;
-
-  display: flex;
-  align-items: center;   
-  gap: 12px;
-}
-
-/* =========================
-   Year / Month
-========================= */
-
-.ym-btn {
-  height: 36px;
-  padding: 0 14px;
-
   display: flex;
   align-items: center;
-  justify-content: center;
-
-  background: var(--bg-main);
-  border: none;
-  border-radius: 999px;
-
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text-main);
-  white-space: nowrap;
+  gap: 20px;
 }
 
 /* =========================
-   View Toggle (월 / 주)
+   Calendar Nav
+========================= */
+
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: #f3f4f6;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.ym-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: #f3f4f6;
+  font-weight: 700;
+  border: none;
+  font-size: 15px;
+}
+
+/* =========================
+   View Toggle
 ========================= */
 
 .view-toggle {
-  height: 36px;
-  padding: 4px;
-
   display: flex;
-  align-items: center;
-
-  background: #f1f3f5;
-  border-radius: 999px;
+  gap: 6px;
 }
 
 .view-btn {
-  min-width: 40px;
-  height: 28px;
-  padding: 0 12px;
-
+  padding: 6px 14px;
+  border-radius: 20px;
   border: none;
-  background: transparent;
-  border-radius: 999px;
-
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-sub);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+  background: #f3f4f6;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .view-btn.active {
-  background: var(--accent);
-  color: #ffffff;
+  background: #6366f1;
+  color: #fff;
 }
 
 /* =========================
-   D-Day Area (KEY)
+   D-Day
 ========================= */
 
 .dday-wrap {
   display: flex;
   align-items: center;
-  gap: 4px;
-
-  padding: 4px;
-  height: 36px;
-
-  background: var(--bg-main);
-  border-radius: 999px;
+  gap: 8px;
 }
 
 .dday-scroll {
-  overflow-x: auto;
-  white-space: nowrap;
-  min-width: 0;    
-  max-width: 200px;  
-}
-
-.dday-scroll::-webkit-scrollbar {
-  display: none;
+  overflow: hidden;
 }
 
 .dday-list {
   display: flex;
   gap: 6px;
-}
-
-.dday-nav {
-  width: 70px;
-  height: 28px;
-  flex-shrink: 0;
-
-  border: none;
-  background: transparent;
-
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text-sub);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  cursor: pointer;
-}
-
-.dday-nav:hover {
-  color: var(--accent);
-}
-
-.dday-list {
-  display: flex;
-  gap: 6px;
-
-  overflow-x: auto;      
-  white-space: nowrap;
-
-  scrollbar-width: none;        
-}
-
-.dday-list::-webkit-scrollbar {
-  display: none;                 
 }
 
 .dday-chip {
-  height: 28px;
-
-  border-radius: 999px;
-
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: #eef2ff;
+  border: none;
   font-size: 13px;
-  font-weight: 600;
+  white-space: nowrap;
 }
 
-
 /* =========================
-   More Button (☰ 더보기)
+   More Button
 ========================= */
 
 .more-btn {
-  height: 36px;
-  padding: 0 10px;
-
-  display: flex;
-  align-items: center;
-  gap: 4px;
-
-  background: transparent;
+  margin-left: auto;   /* 🔥 PC에서 오른쪽 끝 */
+  font-size: 22px;
   border: none;
+  background: none;
   cursor: pointer;
-
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text-main);
-}
-
-.more-btn:hover {
-  color: var(--accent);
-}
-
-.more-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-sub);
 }
 
 /* =========================
-   D-Day Overlay Menu
+   Side Menu
 ========================= */
 
-.dday-overlay {
-  position: absolute;
-  bottom: 100%;          
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 90;
+}
+
+.side-menu {
+  position: fixed;
   right: 0;
-  margin-bottom: 8px;
-
-  min-width: 160px;
-  padding: 6px 0;
-
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-
-  z-index: 50;
+  top: 0;
+  width: 260px;
+  height: 100%;
+  background: #fff;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 100;
+  padding-top: 80px;
 }
 
-.dday-overlay a {
+.side-menu.show {
+  transform: translateX(0);
+}
+
+.side-item {
   display: block;
-  padding: 10px 14px;
-
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-main);
+  padding: 16px 24px;
+  font-size: 16px;
   text-decoration: none;
-}
-
-.dday-overlay a:hover {
-  background: var(--accent-soft);
+  color: #1f2937;
 }
 
 /* =========================
-   First Visit Guide Toast
+   Toast
 ========================= */
 
 .guide-toast {
   position: fixed;
-  top: 64px;
-  right: 16px;
-  z-index: 3000;
-
+  bottom: 30px;
+  right: 30px;
   background: #111827;
-  color: #ffffff;
-
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1.4;
-
-  padding: 10px 14px;
+  color: #fff;
+  padding: 12px 16px;
   border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  font-size: 13px;
+  z-index: 200;
 }
 
 /* =========================
    Mobile
 ========================= */
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+
   .toolbar-inner {
-    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
-    flex-wrap: wrap;        
-    row-gap: 8px;
   }
 
-  .ym-btn {
-    font-size: 15px;
-    padding: 0 12px;
+  /* 1줄 */
+  .calendar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
-  
+
+  /* 2줄 */
+  .view-toggle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* 3줄 */
   .dday-wrap {
- 	 width: 100%;            
-     max-width: 100%;
-	}
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* 🔥 핵심 */
+  .dday-scroll {
+    flex: 1;
+    overflow-x: auto;        /* 가로 스크롤 */
+    overflow-y: hidden;
+  }
+
+  .dday-scroll::-webkit-scrollbar {
+    display: none;           /* 스크롤바 숨김 */
+  }
+
+  .dday-list {
+    display: flex;           /* 한 줄 */
+    gap: 6px;
+    white-space: nowrap;
+  }
 
   .dday-chip {
-    font-size: 11px;
-    padding: 0 8px;
-
+    flex: 0 0 auto;          /* 줄 바꿈 방지 */
+    white-space: nowrap;
   }
 
+  .more-btn {
+    margin-left: auto;
+  }
 }

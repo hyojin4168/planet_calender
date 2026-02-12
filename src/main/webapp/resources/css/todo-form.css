@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+/* =========================
+   Layout
+========================= */
 .todo-page {
   max-width: 720px;
   margin: 0 auto;
@@ -15,36 +18,42 @@
   box-shadow: 0 16px 40px rgba(0,0,0,.08);
 }
 
-.todo-form-container.danger {
-  border: 1px solid #fee2e2;
-}
-
-.page-title {
+/* =========================
+   Title
+========================= */
+.todo-form-container h2 {
   font-size: 22px;
   font-weight: 800;
   margin-bottom: 24px;
 }
 
-/* Form */
+/* =========================
+   Form
+========================= */
 .todo-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .form-group label {
   font-size: 14px;
   font-weight: 700;
-  margin-bottom: 6px;
-  display: block;
+  color: #374151;
 }
 
 .form-group input {
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: 14px;
+  padding: 14px 16px;
+  border-radius: 16px;
   border: 1px solid #e5e7eb;
   font-size: 15px;
+  transition: all 0.2s ease;
 }
 
 .form-group input:focus {
@@ -53,34 +62,33 @@
   box-shadow: 0 0 0 3px rgba(99,102,241,.15);
 }
 
-/* Actions */
+/* =========================
+   Buttons
+========================= */
 .form-actions {
   display: flex;
   gap: 12px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .btn-save {
-  flex: 1;
-  padding: 14px 0;
-  border-radius: 16px;
-  background: #4f46e5;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 800;
-  border: none;
-  cursor: pointer;
+    flex: 1;
+    padding: 14px 0;
+    border-radius: 16px;
+    background: #4f46e5;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
 }
 
-.btn-delete {
-  flex: 1;
-  padding: 14px 0;
-  border-radius: 16px;
-  background: #dc2626;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 800;
-  border: none;
+.btn-save:hover {
+  background: #000000;
+}
+
+.btn-save:active {
+  transform: scale(.97);
 }
 
 .btn-cancel {
@@ -93,11 +101,4 @@
   font-weight: 700;
   text-align: center;
   text-decoration: none;
-}
-
-/* Delete text */
-.delete-text {
-  font-size: 15px;
-  margin-bottom: 24px;
-  color: #374151;
 }

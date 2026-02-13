@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>일정 상세 | Planet Calendar</title>
+
+  <link rel="stylesheet" href="../../css/scheduleDetail.css">
+</head>
+<body>
+
+<main class="schedule-detail-page">
+  <section class="detail-container">
+
+    <h2 class="page-title">일정 상세</h2>
+
+    <!-- 더미 데이터 -->
+    <div class="detail-box">
+
+      <div class="detail-item">
+        <span class="label">제목</span>
+        <span class="value">회의</span>
+      </div>
+
+      <div class="detail-item">
+        <span class="label">날짜</span>
+        <span class="value">2026-02-18</span>
+      </div>
+
+      <div class="detail-item">
+        <span class="label">시간</span>
+        <span class="value">14:00 ~ 16:00</span>
+      </div>
+
+      <div class="detail-item memo-box">
+        <span class="label">메모</span>
+
+        <div class="memo-content">
+          팀 프로젝트 회의입니다.
+        </div>
+
+        <div class="detail-actions">
+          <button onclick="location.href='./schedule-edit.html'">
+            수정
+          </button>
+
+          <button onclick="deleteSchedule()">
+            삭제
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+</main>
+
+<script>
+function deleteSchedule() {
+  if (confirm("정말 삭제하시겠습니까?")) {
+    window.location.href = "../calendar/calendar.html";
+  }
+}
+</script>
+
+</body>
+</html>

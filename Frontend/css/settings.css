@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+/* =========================
+   Base
+========================= */
+.settings-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, "Apple SD Gothic Neo", sans-serif;
+  color: #1f2937;
+}
+
+/* =========================
+   Container
+========================= */
+.settings-container {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 28px 26px;
+  box-shadow: 0 16px 40px rgba(0,0,0,.08);
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+/* =========================
+   List
+========================= */
+.settings-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-item {
+  padding: 18px 4px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.settings-item:last-child {
+  border-bottom: none;
+}
+
+.item-title {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.item-desc {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* 위험 영역 */
+.settings-item.danger .item-title {
+  color: #dc2626;
+}
+
+.settings-item.danger .item-desc {
+  color: #b91c1c;
+}
+
+/* =========================
+   Note
+========================= */
+.settings-note {
+  margin-top: 24px;
+  font-size: 13px;
+  color: #9ca3af;
+  text-align: center;
+}
+
+.btn-logout {
+  padding: 10px 16px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(79,70,229,.25);
+  transition: all 0.2s ease;
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 600px) {
+  .settings-container {
+    padding: 22px 18px;
+  }
+}

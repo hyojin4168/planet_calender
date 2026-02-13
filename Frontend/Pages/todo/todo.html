@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do | Planet Calendar</title>
+
+  <link rel="stylesheet" href="../../css/todo.css">
+</head>
+<body>
+
+<main class="todo-page">
+
+  <section class="todo-container">
+
+    <!-- 상단 -->
+    <div class="todo-header">
+      <h2 class="page-title">To-Do</h2>
+      <a href="./todo-form.html" class="btn-add">+ 추가</a>
+    </div>
+
+    <!-- 날짜 그룹 1 -->
+    <div class="todo-date-group">
+
+      <h3 class="todo-date">2026-02-18</h3>
+
+      <ul class="todo-list">
+
+        <li class="todo-item">
+          <label class="todo-check">
+            <input type="checkbox" class="todo-checkbox">
+            <span class="todo-title">팀 미팅 준비</span>
+          </label>
+
+          <div class="todo-actions">
+            <a href="./todo-edit.html" class="btn-edit">수정</a>
+            <a href="./todo-delete.html"
+               class="btn-delete"
+               onclick="return confirm('삭제하시겠습니까?');">
+              삭제
+            </a>
+          </div>
+        </li>
+
+        <li class="todo-item done">
+          <label class="todo-check">
+            <input type="checkbox"
+                   class="todo-checkbox"
+                   checked>
+            <span class="todo-title">보고서 제출</span>
+          </label>
+
+          <div class="todo-actions">
+            <a href="./todo-edit.html" class="btn-edit">수정</a>
+            <a href="./todo-delete.html"
+               class="btn-delete"
+               onclick="return confirm('삭제하시겠습니까?');">
+              삭제
+            </a>
+          </div>
+        </li>
+
+      </ul>
+
+    </div>
+
+    <!-- 날짜 그룹 2 -->
+    <div class="todo-date-group">
+
+      <h3 class="todo-date">2026-02-19</h3>
+
+      <ul class="todo-list">
+
+        <li class="todo-item">
+          <label class="todo-check">
+            <input type="checkbox" class="todo-checkbox">
+            <span class="todo-title">운동하기</span>
+          </label>
+
+          <div class="todo-actions">
+            <a href="./todo-edit.html" class="btn-edit">수정</a>
+            <a href="./todo-delete.html"
+               class="btn-delete"
+               onclick="return confirm('삭제하시겠습니까?');">
+              삭제
+            </a>
+          </div>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </section>
+
+</main>
+
+</body>
+</html>

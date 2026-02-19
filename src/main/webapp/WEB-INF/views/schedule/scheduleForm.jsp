@@ -10,7 +10,7 @@
   <meta charset="UTF-8">
   <title>
     <c:choose>
-      <c:when test="${mode == 'edit'}">일정 수정</c:when>
+      <c:when test="${not empty schedule}">일정 수정</c:when>
       <c:otherwise>일정 등록</c:otherwise>
     </c:choose>
     | Planet Calendar
@@ -25,41 +25,69 @@
 
     <h2 class="page-title">
       <c:choose>
-        <c:when test="${mode == 'edit'}">일정 수정</c:when>
+        <c:when test="${not empty schedule}">일정 수정</c:when>
         <c:otherwise>일정 등록</c:otherwise>
       </c:choose>
     </h2>
 
-    <form method="post" class="schedule-form">
+    <form method="post"
+          action="<c:choose>
+                    <c:when test='${not empty schedule}'>
+                      ${path}/schedule/update
+                    </c:when>
+                    <c:otherwise>
+                      ${path}/schedule/create
+                    </c:otherwise>
+                  </c:choose>"
+          class="schedule-form">
 
-      <input type="hidden" name="mode" value="${mode}" />
-      <input type="hidden" name="date" value="${date}" />
+      <!-- 수정일 때만 scheduleId 포함 -->
+      <c:if test="${not empty schedule}">
+        <input type="hidden" name="scheduleId"
+               value="${schedule.scheduleId}" />
+      </c:if>
 
       <div class="form-group">
         <label for="title">제목</label>
         <input type="text"
                id="title"
                name="title"
-               value="${title}"
+               value="${schedule.title}"
                placeholder="일정 제목을 입력하세요"
                required>
       </div>
 
       <div class="form-group">
-        <label for="date">날짜</label>
+        <label for="startDate">날짜</label>
         <input type="date"
-               id="date"
-               name="date"
-               value="${date}"
+               id="startDate"
+               name="startDate"
+               value="${schedule.startDate}"
                required>
       </div>
 
       <div class="form-group">
-        <label for="content">메모</label>
-        <textarea id="content"
-                  name="content"
+        <label for="startTime">시작 시간</label>
+        <input type="time"
+               id="startTime"
+               name="startTime"
+               value="${schedule.startTime}">
+      </div>
+
+      <div class="form-group">
+        <label for="endTime">종료 시간</label>
+        <input type="time"
+               id="endTime"
+               name="endTime"
+               value="${schedule.endTime}">
+      </div>
+
+      <div class="form-group">
+        <label for="memo">메모</label>
+        <textarea id="memo"
+                  name="memo"
                   rows="4"
-                  placeholder="메모를 입력하세요">${content}</textarea>
+                  placeholder="메모를 입력하세요">${schedule.memo}</textarea>
       </div>
 
       <div class="form-actions">
@@ -67,7 +95,7 @@
 
         <button type="submit" class="btn-submit">
           <c:choose>
-            <c:when test="${mode == 'edit'}">수정하기</c:when>
+            <c:when test="${not empty schedule}">수정하기</c:when>
             <c:otherwise>등록하기</c:otherwise>
           </c:choose>
         </button>
@@ -80,5 +108,3 @@
 </main>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
-</body>
-</html>

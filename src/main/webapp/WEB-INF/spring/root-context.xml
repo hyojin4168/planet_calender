@@ -14,16 +14,19 @@
         http://www.springframework.org/schema/aop
         https://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <!-- 공통 컴포넌트 스캔 (필요 시) -->
+    <!-- ========================= -->
+    <!-- Component Scan -->
+    <!-- ========================= -->
     <context:component-scan base-package="net.planet.calendar"/>
 
     <!-- ========================= -->
-    <!-- DB / Transaction (비활성) -->
+    <!-- DB Properties -->
     <!-- ========================= -->
-
-    <!--
     <context:property-placeholder location="classpath:prop/db.properties"/>
 
+    <!-- ========================= -->
+    <!-- HikariCP DataSource -->
+    <!-- ========================= -->
     <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
         <property name="driverClassName" value="${jdbc.driver}"/>
         <property name="jdbcUrl" value="${jdbc.url}"/>
@@ -35,6 +38,22 @@
         <constructor-arg ref="hikariConfig"/>
     </bean>
 
+    <!-- ========================= -->
+    <!-- MyBatis (Annotation 방식) -->
+    <!-- ========================= -->
+    <bean id="sqlSessionFactory"
+          class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="ds"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage"
+                  value="net.planet.calendar.dao"/>
+    </bean>
+
+    <!-- ========================= -->
+    <!-- Transaction Manager -->
+    <!-- ========================= -->
     <bean id="transactionManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="ds" />
@@ -42,6 +61,5 @@
 
     <aop:aspectj-autoproxy />
     <tx:annotation-driven/>
-    -->
 
 </beans>

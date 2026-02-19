@@ -1,21 +1,26 @@
-/* ==================================================
-   Planet Calendar Database Script
-   목적 : 테이블 구조 설계 및 초기 데이터 예시
-   상태 : DB 미연동 (설계 단계)
-   ================================================== */
+CREATE DATABASE planet_calendar
+  DEFAULT CHARACTER SET utf8mb4
+  DEFAULT COLLATE utf8mb4_general_ci;
 
-/* --------------------------------------------------
-   [Table] schedule
-   설명 : 일정 정보를 관리하는 테이블
-   -------------------------------------------------- */
+USE planet_calendar;
+
 CREATE TABLE schedule (
-    schedule_id   INT AUTO_INCREMENT PRIMARY KEY, -- 일정 ID
-    title         VARCHAR(100) NOT NULL,           -- 일정 제목
-    description   VARCHAR(255),                    -- 일정 설명
-    schedule_date DATE NOT NULL,                   -- 일정 날짜
-    created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- 생성일
-);
+    schedule_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '일정 PK',
+    title       VARCHAR(100) NOT NULL COMMENT '일정 제목',
+    start_date  DATE NOT NULL COMMENT '시작 날짜',
+    start_time  TIME NOT NULL COMMENT '시작 시간',
+    end_time    TIME NULL COMMENT '종료 시간',
+    memo        TEXT NULL COMMENT '메모',
+    created_at  DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성일',
 
-/* 예시 데이터 (테스트용) */
-INSERT INTO schedule (title, description, schedule_date)
-VALUES ('프로젝트 시작', 'Planet Calendar 개발 시작', '2026-02-01');
+    PRIMARY KEY (schedule_id),
+    INDEX idx_start_date (start_date)
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COMMENT='일정 테이블';
+
+INSERT INTO schedule (title, start_date, start_time, end_time, memo)
+VALUES
+('팀 회의', '2026-02-18', '14:00:00', '15:00:00', '회의실 A'),
+('병원 방문', '2026-02-20', '10:00:00', NULL, '정기 검진'),
+('프로젝트 마감', '2026-02-25', '23:00:00', NULL, '최종 제출');

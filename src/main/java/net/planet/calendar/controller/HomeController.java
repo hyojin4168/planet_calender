@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-    // 기본 진입 → 캘린더
     @GetMapping("/")
     public String root() {
-        return "calendar/calendar";
+        return "redirect:/calendar";   
     }
 
-    // 홈(D-Day 요약)
     @GetMapping("/home")
     public String home() {
         return "home";
     }
 }
+
+

@@ -31,32 +31,25 @@
   </section>
   
   <!-- 일정 목록 패널 -->
-	<section class="schedule-panel"
-         <c:if test="${empty selectedDate}">style="display:none;"</c:if>>
+<section class="schedule-panel ${not empty schedules ? 'active' : ''}">
 
-    <div class="schedule-header">
-      <h3 class="schedule-title">
-        ${selectedDate} 일정
-      </h3>
-    </div>
+  <div class="schedule-header">
+    <h3 class="schedule-title">
+      ${selectedDate} 일정
+    </h3>
+  </div>
 
-    <c:if test="${not empty schedules}">
-      <ul class="schedule-list">
-        <c:forEach var="s" items="${schedules}">
-          <li class="schedule-item"
-              onclick="location.href='${path}/schedule/detail?scheduleId=${s.scheduleId}'">
-            <span class="time">${s.startTime}</span>
-            <span class="title">${s.title}</span>
-          </li>
-        </c:forEach>
-      </ul>
-    </c:if>
-
-    <c:if test="${empty schedules}">
-      <div class="empty-state">
-        해당 날짜에 일정이 없습니다.
-      </div>
-    </c:if>
+  <c:if test="${not empty schedules}">
+    <ul class="schedule-list">
+      <c:forEach var="s" items="${schedules}">
+        <li class="schedule-item"
+            onclick="location.href='${path}/schedule/detail?scheduleId=${s.scheduleId}'">
+          <span class="time">${s.startTime}</span>
+          <span class="title">${s.title}</span>
+        </li>
+      </c:forEach>
+    </ul>
+  </c:if>
 
 </section>
 
@@ -64,6 +57,7 @@
 
 <script>
   const contextPath = "${pageContext.request.contextPath}";
+  const selectedDate = "${selectedDate}";
 
   const monthEventDates = [
   <c:forEach var="s" items="${monthSchedules}" varStatus="status">
@@ -71,7 +65,6 @@
   </c:forEach>
   ];
 </script>
-
 
 <script src="${path}/resources/js/main.js"></script>
 

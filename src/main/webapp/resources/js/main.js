@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const prevBtn = document.querySelector(".prev-btn");
   const nextBtn = document.querySelector(".next-btn");
 
+  const selectedDateFromServer =
+    typeof selectedDate !== "undefined" ? selectedDate : null;
+
   /* =========================
      Utilities
   ========================== */
@@ -32,36 +35,50 @@ document.addEventListener("DOMContentLoaded", function () {
   /* =========================
      Date Cell
   ========================== */
- function createCell(key, day) {
-  const cell = document.createElement("div");
-  cell.className = "date-cell";
+  function createCell(key, day) {
 
-  const num = document.createElement("span");
-  num.className = "date-num";
-  num.textContent = day;
-  cell.appendChild(num);
+    const cell = document.createElement("div");
+    cell.className = "date-cell";
 
-  // 오늘 표시
-  if (key === dateKey(today)) {
-    cell.classList.add("today");
+    const num = document.createElement("span");
+    num.className = "date-num";
+    num.textContent = day;
+    cell.appendChild(num);
+
+    // 오늘 표시
+    if (key === dateKey(today)) {
+      cell.classList.add("today");
+    }
+
+    // 서버에서 선택된 날짜 표시
+    if (selectedDateFromServer === key) {
+      cell.classList.add("selected");
+    }
+
+    // DB 점 표시
+    if (typeof monthEventDates !== "undefined" &&
+        monthEventDates.includes(key)) {
+
+      const dot = document.createElement("span");
+      dot.className = "event-dot";
+      cell.appendChild(dot);
+    }
+
+    // 날짜 클릭 이벤트
+    cell.addEventListener("click", () => {
+
+      // 같은 날짜 다시 클릭 → 패널 닫기
+      if (selectedDateFromServer === key) {
+        window.location.href = contextPath + "/calendar";
+        return;
+      }
+
+      // 다른 날짜 클릭 → 서버 이동
+      window.location.href = contextPath + "/calendar?date=" + key;
+    });
+
+    return cell;
   }
-
-  // DB 기반 점 표시
-  if (typeof monthEventDates !== "undefined" &&
-      monthEventDates.includes(key)) {
-
-    const dot = document.createElement("span");
-    dot.className = "event-dot";
-    cell.appendChild(dot);
-  }
-
-  cell.addEventListener("click", () => {
-    window.location.href = contextPath + "/calendar?date=" + key;
-  });
-
-  return cell;
-}
-
 
   /* =========================
      Month Render
@@ -112,25 +129,37 @@ document.addEventListener("DOMContentLoaded", function () {
   /* =========================
      Navigation
   ========================== */
+
   if (prevBtn) {
     prevBtn.addEventListener("click", () => {
+
       if (viewMode === "month")
         currentDate.setMonth(currentDate.getMonth() - 1);
       else
         currentDate.setDate(currentDate.getDate() - 7);
 
-      render();
+      const y = currentDate.getFullYear();
+      const m = pad(currentDate.getMonth() + 1);
+
+      // 월 이동 시 패널 제거 (date 파라미터 없음)
+      window.location.href = contextPath +
+        "/calendar?year=" + y + "&month=" + m;
     });
   }
 
   if (nextBtn) {
     nextBtn.addEventListener("click", () => {
+
       if (viewMode === "month")
         currentDate.setMonth(currentDate.getMonth() + 1);
       else
         currentDate.setDate(currentDate.getDate() + 7);
 
-      render();
+      const y = currentDate.getFullYear();
+      const m = pad(currentDate.getMonth() + 1);
+
+      window.location.href = contextPath +
+        "/calendar?year=" + y + "&month=" + m;
     });
   }
 

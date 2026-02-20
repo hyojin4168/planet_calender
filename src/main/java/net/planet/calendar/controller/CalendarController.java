@@ -26,30 +26,28 @@ public class CalendarController {
     public String calendar(@RequestParam(required = false) String date,
                            Model model) {
 
-        LocalDate baseDate;
+        LocalDate selectedDate;
 
-        if (date != null) {
-            baseDate = LocalDate.parse(date);
-            model.addAttribute("selectedDate", baseDate);
-
-            List<Schedule> schedules =
-                    scheduleService.getSchedulesByDate(baseDate);
-            model.addAttribute("schedules", schedules);
+        if (date == null || date.trim().isEmpty()) {
+            selectedDate = LocalDate.now();
         } else {
-            baseDate = LocalDate.now();
+            selectedDate = LocalDate.parse(date);
         }
 
-        // 월 단위 조회 추가
-        List<Schedule> monthSchedules =
-                scheduleService.getSchedulesByMonth(
-                        baseDate.getYear(),
-                        baseDate.getMonthValue()
-                );
+        int year = selectedDate.getYear();
+        int month = selectedDate.getMonthValue();
 
+        List<Schedule> schedules =
+                scheduleService.getSchedulesByDate(selectedDate);
+
+        List<Schedule> monthSchedules =
+                scheduleService.getSchedulesByMonth(year, month);
+
+        model.addAttribute("selectedDate", selectedDate);
+        model.addAttribute("schedules", schedules);
         model.addAttribute("monthSchedules", monthSchedules);
 
         return "calendar/calendar";
     }
-
 
 }

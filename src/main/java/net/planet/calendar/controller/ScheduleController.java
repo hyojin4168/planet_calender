@@ -23,16 +23,21 @@ public class ScheduleController {
     // 상세
     // =========================
     @GetMapping("/detail")
-    public String detail(@RequestParam Long scheduleId, Model model) {
+    public String detail(@RequestParam(required = false) Long scheduleId,
+                         Model model) {
+
+        if (scheduleId == null) {
+            return "redirect:/calendar";
+        }
 
         Schedule schedule = scheduleService.getScheduleDetail(scheduleId);
 
         if (schedule == null) {
-            return "error/404";
+            return "redirect:/calendar";
         }
 
         model.addAttribute("schedule", schedule);
-        return "schedule/scheduleDetail";
+        return "schedule/detail";
     }
 
     // =========================

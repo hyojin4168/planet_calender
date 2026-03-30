@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+/* =========================
+   Home Page
+========================= */
+
+.home-page {
+  padding: 16px;
+  padding-bottom: 88px; /* footer 영역 */
+}
+
+/* =========================
+   Section Title
+========================= */
+
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+/* =========================
+   D-Day Summary List
+========================= */
+
+.dday-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dday-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* =========================
+   Count / Title
+========================= */
+
+.dday-count {
+  min-width: 56px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #4f46e5;
+}
+
+.dday-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* =========================
+   More Link
+========================= */
+
+.dday-more {
+  display: block;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #6b7280;
+  text-align: right;
+  text-decoration: none;
+}
+
+.dday-more:hover {
+  text-decoration: underline;
+}

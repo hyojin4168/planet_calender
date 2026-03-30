@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do 삭제 | Planet Calendar</title>
+
+  <link rel="stylesheet" href="../../css/todo-form.css">
+</head>
+<body>
+
+<main class="todo-page">
+
+  <section class="todo-form-container danger">
+
+    <h2 class="page-title">To-Do 삭제</h2>
+
+    <p class="delete-text">
+      이 할 일을 삭제하시겠습니까?
+    </p>
+
+    <div class="form-actions">
+      <button type="button"
+              class="btn-delete"
+              onclick="confirmDelete()">
+        삭제
+      </button>
+
+      <a href="./todo-list.html" class="btn-cancel">취소</a>
+    </div>
+
+  </section>
+
+</main>
+
+<script>
+function confirmDelete() {
+  if (confirm("정말 삭제하시겠습니까?")) {
+    window.location.href = "./todo-list.html";
+  }
+}
+</script>
+
+</body>
+</html>

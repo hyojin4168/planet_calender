@@ -1,0 +1,165 @@
+@charset "UTF-8";
+
+/* =========================
+   Todo Page
+========================= */
+
+.todo-page {
+  padding: 16px;
+  padding-bottom: 88px;
+}
+
+/* =========================
+   Header
+========================= */
+
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.page-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.btn-add {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+/* =========================
+   Date Group
+========================= */
+
+.todo-date-group {
+  margin-bottom: 20px;
+}
+
+.todo-date {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+/* =========================
+   List
+========================= */
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.todo-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: default;
+}
+
+.todo-check input {
+  width: 18px;
+  height: 18px;
+}
+
+.todo-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: #111827;
+}
+
+/* 완료 상태 */
+.todo-item.done .todo-title {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+/* =========================
+   Todo Actions
+========================= */
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-edit,
+.btn-delete {
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;              
+  cursor: pointer;
+}
+
+.btn-edit {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.btn-edit:hover {
+  background: #e5e7eb;
+}
+
+.btn-delete {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.btn-delete:hover {
+  background: #fecaca;
+}
+
+/* 완료된 Todo */
+.todo-item.done .todo-title {
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.btn-save {
+  flex: 1;
+}
+
+.btn-cancel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: #f3f4f6;
+  text-decoration: none;
+  color: #374151;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.btn-cancel:hover {
+  background: #e5e7eb;
+}
+
